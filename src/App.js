@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
 // imports from firebase
@@ -7,7 +7,7 @@ import {
   createUserWithEmailAndPassword,
   // onAuthStateChanged,
   // updateProfile,
-  // signInWithEmailAndPassword,
+  signInWithEmailAndPassword,
   // signOut,
   // sendPasswordResetEmail
 } from "firebase/auth";
@@ -30,6 +30,8 @@ function App() {
   const [error, setError] = useState(null);
   const [errorMessage, setErrorMessage] = useState('');
   const [profileCretaed, setProfileCretaed] = useState(false);
+
+  const history = useNavigate();
   
   const registerUser = async (userName, firstName, lastName, email, password) => {
     if (userName !== '' && firstName !== '' && lastName !== '' && email !== '' && password) {
@@ -66,6 +68,32 @@ function App() {
       setErrorMessage('All Fields are required')
     }
   }
+
+  const login = (email, password) => {
+    if (email !== '' && password !== '') {
+      try {
+        signInWithEmailAndPassword(auth, email, password)
+          .then(res => {
+            console.log(res);
+          })
+          .catch(err => {
+            setError(err.message);
+            console.log(err.message);
+          })
+          .finally(() => {
+            setLoader(false);
+          })
+          
+        history.push('/')
+      } catch(error) {
+        console.log(error.message);
+      }      
+    } else {
+      setLoader(false);
+      setError(true);
+      setErrorMessage('Something went wrong');
+    }
+  }
     
 
   return (
@@ -73,7 +101,14 @@ function App() {
       <Navigation />
       <Routes>
         <Route path='/' element={<TodoApp />} />
-        <Route path='/login' element={<Login />} />
+        <Route path='/login' element={
+          <Login 
+            login={login}
+            loader={loader}
+            error={error}
+            errorMessage={errorMessage}
+          />
+        } />
         <Route path='/register' element={
           <Register
             registerUser={registerUser} 
