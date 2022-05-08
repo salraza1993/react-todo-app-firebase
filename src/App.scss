@@ -1,0 +1,43 @@
+body {
+  background-color: var(--bs-dark);
+}
+
+.react_logo_animation {
+  position: absolute;
+  bottom: -10vh;
+  left: -7.5vw;
+  width: 35vw;
+  height: 35vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  opacity: .05;    
+
+  img, svg {
+    height: 120%;
+    width: auto;
+    animation: App-logo-spin infinite 30s linear;
+    @keyframes App-logo-spin {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+  }
+}
+header {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+  padding: calc(1rem + .5vw);
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+}

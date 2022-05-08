@@ -1,0 +1,115 @@
+$white: var(--bs-white-rgb);
+$transition: all .3s ease-in;
+
+.todo_app_main_container {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  padding: 5vw 1vw;
+  background-repeat: no-repeat;
+  background-position: left -20vw bottom -12vw;
+  background-size: 60vw;
+  overflow: hidden;
+  
+  .sub_container {
+    position: relative;
+    z-index: 1;
+    margin-inline: auto;
+    text-align: center;
+    max-width: 650px;
+
+    .sb-heading {
+      opacity: .5;
+      letter-spacing: .3vw;
+    }
+
+    .todo_input_form {
+      position: relative;
+      width: 100%;
+      border: 1px solid rgba($white, 0.2);
+      padding: .5rem;
+      border-radius: .35rem;
+      transition: $transition;
+      &:hover, &:focus-within, &:focus-visible {
+        border-color: var(--bs-info);
+        box-shadow: 
+          0 5px 10px rgba(var(--bs-info-rgb), 0.2),
+          0 20px 50px rgba(var(--bs-info-rgb), 0.15);
+      }
+      input {
+        background-color: transparent;
+        outline: none;
+        border: 0;
+        color: var(--bs-white);
+        font-size: 1.15rem;
+        &:focus {
+          outline: none;
+          box-shadow: none;
+        }
+      }
+    }
+
+    .todo_list_items_container {
+      position: relative;
+      width: 100%;
+      border-top: 1px solid rgba($white, 0.15);
+      border-bottom: 1px solid rgba($white, 0.15);
+      padding: .0rem 0;
+      border-radius: .35rem;
+      overflow: hidden;
+      .todo_list_items {
+        position: relative;
+        padding: 1rem;
+        background-color: rgba($white, .05);
+        border-left: 1px solid rgba($white, 0.15);
+        border-right: 1px solid rgba($white, 0.15);
+        &:not(.disabled):hover {
+          transition: $transition;
+          background-color: rgba(var(--bs-info-rgb), .1);
+        }
+        &:not(:last-child) {
+          border-bottom: 1px solid rgba($white, 0.15);
+        }
+        .list-content {
+          .btn {
+            height: 22px;
+            font-size: .75rem;
+            line-height: .75em;
+          }
+          .content {
+            line-height: 1.5em;
+          }
+        }
+
+        .actions {
+          .btn {
+            width: 30px;
+            height: 30px;
+            padding: 0;
+            text-align: center;
+            font-size: .8rem;
+            line-height: .85rem;
+          }
+        }
+        .timing {
+          position: relative;
+          font-size: 0.7rem;
+          opacity: .5;
+          margin-top: .75rem;
+        }
+        &.disabled {
+          opacity: .36;
+          background-color: var(--bs-dark);
+          color: red;
+          // .list-content .btn { pointer-events: none;}
+          .content {
+            pointer-events: none;
+            opacity: .5;
+            font-weight: 300;
+            text-decoration: line-through;
+          }
+        }
+      }
+    }
+  }
+}
