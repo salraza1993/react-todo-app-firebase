@@ -10,10 +10,10 @@ const Login = () => {
       <div className="form_sub_container">
         <h2 className='text-center mb-4 text-info'>Login</h2>
         <form className="form">
-          <input type="email" name="" id="" className='form-control form-control-lg' placeholder="Enter Email Id / Username" />
-          <input type="password" name="" id="" className='form-control form-control-lg' placeholder="Enter Password" />
+          <input type="email" name="" id="" className='form-control form-control-lg' placeholder="Enter Email Id / Username" required />
+          <input type="password" name="" id="" className='form-control form-control-lg' placeholder="Enter Password" required />
           <button type="submit" className="btn btn-info px-4 fw-bold btn-lg text-uppercase">Login</button>
-          <Link className='forget_password d-inline-block  mt-3' href to="/forgot-password">Forgot Password?</Link>
+          <Link className='forget_password d-inline-block' href to="/forgot-password">Forgot Password?</Link>
         </form>
       </div>
       <p className='mt-4 text-secondary text-center'>

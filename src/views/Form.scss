@@ -12,9 +12,11 @@ $transition: all .3s ease-in;
 }
 
 .form_sub_container {
+  overflow: hidden;
   position: relative;
   width: 100%;
   max-width: 450px;
+  min-height: 350px;
   padding: 2rem;
   border-radius: .5rem;
   background-color: rgba(var(--bs-white-rgb), .015);
@@ -42,6 +44,12 @@ $transition: all .3s ease-in;
       &:focus {
         box-shadow: 0 5px 10px rgba(var(--bs-info), 1);
         border-color: var(--bs-info);
+        color: var(--bs-white);
+      }
+      &:valid {
+        border-color: var(--bs-success);
+        color: #6cdca8;
+        font-weight: 600;
       }
 
     }

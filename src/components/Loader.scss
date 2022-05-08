@@ -1,0 +1,18 @@
+.loading-container {
+  position: absolute;
+  z-index: 11;
+  inset: 0;
+  background-color: rgba(var(--bs-dark-rgb), .85);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .spinner {
+    font-size: calc(30px + .5vw);
+    animation: spin 2s  linear infinite;
+  }
+  @keyframes spin {
+    100% { transform: rotateZ(360deg);}
+  }
+}
